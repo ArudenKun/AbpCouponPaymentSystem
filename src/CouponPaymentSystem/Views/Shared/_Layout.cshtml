@@ -1,0 +1,63 @@
+﻿@using Abp.Timing
+@using Abp.Dependency
+@using Abp.Web.Mvc.Alerts
+@using Abp.Web.Mvc.Extensions
+
+@{
+    SetAntiForgeryCookie();
+    AlertList alerts = null!;
+    IocManager.Instance.Using<IAlertManager>(alertManager => alerts = alertManager.Alerts);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coupon Payment System</title>
+    @Styles.Render("~/bundles/css")
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/js/base/head")
+    <script type="text/javascript">
+        var abp = abp || {};
+        abp.appPath = '@ApplicationPath';
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        @if (alerts.Any())
+        {
+            <div id="AbpPageAlerts">
+                @foreach (var alertMessage in alerts)
+                {
+                    <div class="alert alert-@alertMessage.Type.ToString().ToLower() @(alertMessage.Dismissible ? "alert-dismisable" : "")"
+                         role="alert">
+                        <h4 class="alert-heading">
+                            @alertMessage.Title
+                            @if (alertMessage.Dismissible)
+                            {
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            }
+                        </h4>
+                        <p>@alertMessage.Text</p>
+                    </div>
+                }
+            </div>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/js/base")
+    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+    @* ReSharper disable Html.PathError *@
+    <script src="~/signalr/hubs"></script>
+    @* ReSharper restore Html.PathError *@
+    @Html.IncludeScript("/Abp/Framework/scripts/libs/abp.signalr.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

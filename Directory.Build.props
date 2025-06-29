@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <IsRelease>true</IsRelease>
+    <IsDebug>false</IsDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <IsRelease>false</IsRelease>
+    <IsDebug>true</IsDebug>
+  </PropertyGroup>
+</Project>

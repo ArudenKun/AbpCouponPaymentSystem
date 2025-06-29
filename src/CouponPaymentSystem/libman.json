@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "modernizr@2.8.3",
+      "destination": "lib/modernizr/",
+      "files": [
+        "modernizr.js"
+      ]
+    },
+    {
+      "library": "jquery@3.7.1",
+      "destination": "lib/jquery/",
+      "files": [
+        "jquery.min.js",
+        "jquery.js"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "@types/jquery@3.5.32",
+      "destination": "lib/jquery/types/",
+      "files": [
+        "index.d.ts",
+        "JQuery.d.ts",
+        "JQueryStatic.d.ts",
+        "legacy.d.ts",
+        "misc.d.ts"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.21.0",
+      "destination": "lib/jquery",
+      "files": [
+        "jquery.validate.min.js",
+        "jquery.validate.js"
+      ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "lib/jquery/"
+    },
+    {
+      "library": "bootstrap@5.3.7",
+      "destination": "lib/bootstrap/",
+      "files": [
+        "js/bootstrap.bundle.js",
+        "js/bootstrap.bundle.js.map",
+        "js/bootstrap.bundle.min.js",
+        "js/bootstrap.bundle.min.js.map",
+        "css/bootstrap.css",
+        "css/bootstrap.css.map",
+        "css/bootstrap.min.css",
+        "css/bootstrap.min.css.map"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "@types/bootstrap@5.2.10",
+      "destination": "lib/bootstrap/types/",
+      "files": [
+        "js/dist/alert.d.ts",
+        "js/dist/base-component.d.ts",
+        "js/dist/button.d.ts",
+        "js/dist/carousel.d.ts",
+        "js/dist/collapse.d.ts",
+        "js/dist/dropdown.d.ts",
+        "js/dist/modal.d.ts",
+        "js/dist/offcanvas.d.ts",
+        "js/dist/popover.d.ts",
+        "js/dist/scrollspy.d.ts",
+        "js/dist/tab.d.ts",
+        "js/dist/toast.d.ts",
+        "js/dist/tooltip.d.ts",
+        "index.d.ts"
+      ]
+    },
+    {
+      "library": "jquery.blockUI@2.70",
+      "destination": "lib/jquery/blockUI/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@types/jquery.blockui@0.0.33",
+      "destination": "lib/jquery/blockui/",
+      "files": [
+        "index.d.ts"
+      ]
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "lib/toastr/",
+      "files": [
+        "toastr.min.js",
+        "toastr.min.css"
+      ]
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "lib/jquery/"
+    },
+    {
+      "library": "jquery.serializeJSON@3.2.1",
+      "destination": "lib/jquery/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "signalr@2.4.3",
+      "destination": "lib/signalr/",
+      "files": [
+        "jquery.signalR.js",
+        "jquery.signalR.min.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "sweetalert2@11.22.1",
+      "destination": "lib/sweetalert2/",
+      "files": [
+        "sweetalert2.all.js",
+        "sweetalert2.all.min.js",
+        "sweetalert2.d.ts"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "spin.js@2.3.2",
+      "destination": "lib/spin/"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+﻿<Project Sdk="MSBuild.SDK.SystemWeb/4.0.104">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <UsingMSBuildSDKSystemWeb>true</UsingMSBuildSDKSystemWeb>
+    <GeneratedBindingRedirectsAction>Overwrite</GeneratedBindingRedirectsAction>
+    <MicrosoftNetCompilersToolset_Version>4.14.0</MicrosoftNetCompilersToolset_Version>
+    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>4.1.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Abp\Framework\**\*.*" />
+    <Content Include="Lib\**\*.*" />
+    <Content Include="Content\**\*.*" />
+    <Content Include="Scripts\**\*.*" />
+    <Content Include="Views\**\*.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libman.json" />
+    <None Include="Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.Castle.Log4Net" Version="[9.4.2]" />
+    <PackageReference Include="Abp.Owin" Version="[9.4.2]" />
+    <PackageReference Include="Abp.Web.Api" Version="[9.4.2]" />
+    <PackageReference Include="Abp.Web.Mvc" Version="[9.4.2]" />
+    <PackageReference Include="Abp.Web.Resources" Version="[9.4.2]" />
+    <PackageReference Include="Abp.Web.SignalR" Version="[9.4.2]" />
+    <PackageReference Include="BundleTransformer.NUglify" Version="1.15.4" />
+    <PackageReference Include="ConfigureAwait.Fody" Version="3.3.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Owin" Version="1.2.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.2.2" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" />
+    <PackageReference Include="Polyfill" Version="8.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CouponPaymentSystem.Core\CouponPaymentSystem.Core.csproj" />
+  </ItemGroup>
+</Project>

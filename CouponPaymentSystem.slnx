@@ -1,0 +1,10 @@
+﻿<Solution>
+  <Folder Name="/lib/" />
+  <Folder Name="/solution/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src\CouponPaymentSystem.Core\CouponPaymentSystem.Core.csproj" Type="Classic C#" />
+    <Project Path="src\CouponPaymentSystem\CouponPaymentSystem.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>

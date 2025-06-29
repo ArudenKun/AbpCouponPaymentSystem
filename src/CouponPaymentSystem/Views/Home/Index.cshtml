@@ -1,0 +1,44 @@
+﻿@using CouponPaymentSystem.Common
+@model CouponPaymentSystem.ViewModels.UploadViewModel
+@{
+    ViewBag.Title = "Upload";
+}
+
+@section scripts
+{
+    <script>
+        function debugUpload() {
+            abp.services.app.upload.debugUpload().done(function () {
+                abp.message.info("Upload Complete!");
+            })
+        }
+    </script>
+}
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <button class="btn btn-primary" onclick="debugUpload()">
+        Test Debug Upload
+    </button>
+    @* <div class="card w-50"> *@
+    @*     <div class="card-header bg-primary text-white text-center rounded-top"> *@
+    @*         <h5 class="card-title mb-0">Upload Transaction File</h5> *@
+    @*     </div> *@
+    @*     @using (Html.BeginForm()) *@
+    @*     { *@
+    @*         <div class="mb-3"> *@
+    @*             <label> *@
+    @*                  *@
+    @*             </label> *@
+    @*         </div> *@
+    @*         <div class="mb-3"> *@
+    @*             <label for="exampleInputPassword1" class="form-label">Password</label> *@
+    @*             <input type="password" class="form-control" id="exampleInputPassword1"> *@
+    @*         </div> *@
+    @*         <div class="mb-3 form-check"> *@
+    @*             <input type="checkbox" class="form-check-input" id="exampleCheck1"> *@
+    @*             <label class="form-check-label" for="exampleCheck1">Check me out</label> *@
+    @*         </div> *@
+    @*         <button type="submit" class="btn btn-primary">Submit</button> *@
+    @*     } *@
+    @* </div> *@
+</div>
+
