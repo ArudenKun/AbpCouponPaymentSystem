@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -20,9 +19,10 @@ using CouponPaymentSystem.Common;
 using CouponPaymentSystem.Core;
 using CouponPaymentSystem.Core.Configurations;
 using FluentNHibernate.Cfg.Db;
-using Humanizer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin.Security;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace CouponPaymentSystem;
 
@@ -52,20 +52,6 @@ public class CpsModule : AbpModule
                 .LifestyleSingleton()
         );
 
-        var config = IocManager.IocContainer.Resolve<Config>();
-        Configuration.DefaultNameOrConnectionString = config.Database.Cps.ConnectionString;
-        Configuration
-            .Modules.AbpNHibernate()
-            .FluentConfiguration.Database(
-                MsSqlConfiguration.MsSql2012.ConnectionString(
-                    Configuration.DefaultNameOrConnectionString
-                )
-            )
-            .Mappings(m =>
-                m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly())
-                    .AddFromAssembly(typeof(CpsCoreModule).Assembly)
-            );
-
         var services = new ServiceCollection();
         IocManager.IocContainer.AddServices(services);
 
@@ -79,6 +65,32 @@ public class CpsModule : AbpModule
                     Logger.Info($"Blob Storing Path: {fileSystem.BasePath}");
                 });
             });
+
+        var config = IocManager.IocContainer.Resolve<Config>();
+        Configuration.DefaultNameOrConnectionString = config.Database.Cps.ConnectionString;
+        Configuration
+            .Modules.AbpNHibernate()
+            .FluentConfiguration.Database(
+                MsSqlConfiguration.MsSql2012.ConnectionString(
+                    Configuration.DefaultNameOrConnectionString
+                )
+            )
+            .Mappings(m =>
+                m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly())
+                    .AddFromAssembly(typeof(CpsCoreModule).Assembly)
+            )
+            .ExposeConfiguration(Config);
+    }
+
+    private void Config(Configuration configuration)
+    {
+        using var writer = new StringWriter();
+        new SchemaExport(configuration).Create(writer, false);
+        writer.Flush();
+        writer.Close();
+
+        var sql = writer.ToString();
+        File.WriteAllText(Path.Combine(PathHelper.AppDataDir, "schema.sql"), sql);
     }
 
     public override void Initialize()
